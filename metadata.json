@@ -1,0 +1,5 @@
+{
+  "name": "AI Readiness Score Tool",
+  "description": "A resume-grounded, domain-adaptive AI readiness assessment tool that evaluates your career preparedness for the AI era.",
+  "requestFramePermissions": []
+}
