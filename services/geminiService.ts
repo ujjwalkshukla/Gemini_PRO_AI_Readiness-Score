@@ -22,7 +22,7 @@ const PRO_MODEL = 'gemini-2.0-flash';
 export const detectDomain = async (resumeText: string): Promise<DomainResult> => {
   const ai = getAI();
   const prompt = `
-    Analyze the following resume text and detect the primary professional domain (e.g., Data Science, Software Engineering, Marketing, Finance, Sales, Design).
+    Analyze the following resume text and detect the primary professional domain (e.g., Data Science, Software Engineering, Marketing, Finance, Sales, Design, Product Management).
     Provide a confidence score (0.0 to 1.0) and a brief reasoning.
     
     Resume Text:
