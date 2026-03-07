@@ -1,5 +1,7 @@
 # AI Readiness Score Tool
 
+App Here: [https://ujjwalkshukla.github.io/Gemini_PRO_AI_Readiness-Score/](url)
+
 A professional, domain-adaptive tool that evaluates your resume against the requirements of the AI-driven workforce. Grounded entirely in your resume evidence, it uses **Gemini 3 Pro** to perform a strict audit of your skills.
 
 ## 🚀 Features
