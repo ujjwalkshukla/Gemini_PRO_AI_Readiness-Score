@@ -1,15 +1,26 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { AnalysisResult, DomainResult, CustomEvaluationResult } from "../types";
 
-// Initialize Gemini Client
-// The API key is obtained from the environment variable process.env.API_KEY.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize Gemini Client Lazily
+let aiInstance: GoogleGenAI | null = null;
+
+const getAI = () => {
+  if (!aiInstance) {
+    const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error("Gemini API Key is missing. For GitHub Pages deployment, ensure the key is provided during the build process or via environment variables.");
+    }
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+};
 
 // Model Constants
 const FAST_MODEL = 'gemini-3-flash-preview';
 const PRO_MODEL = 'gemini-3-pro-preview';
 
 export const detectDomain = async (resumeText: string): Promise<DomainResult> => {
+  const ai = getAI();
   const prompt = `
     Analyze the following resume text and detect the primary professional domain (e.g., Data Science, Software Engineering, Marketing, Finance, Sales, Design).
     Provide a confidence score (0.0 to 1.0) and a brief reasoning.
@@ -47,6 +58,7 @@ export const detectDomain = async (resumeText: string): Promise<DomainResult> =>
 };
 
 export const evaluateReadiness = async (resumeText: string, domain: string): Promise<AnalysisResult> => {
+  const ai = getAI();
   const prompt = `
     TARGET DOMAIN for Audit: "${domain}"
 
@@ -127,6 +139,7 @@ export const evaluateReadiness = async (resumeText: string, domain: string): Pro
 };
 
 export const evaluateCustomCriterion = async (resumeText: string, query: string): Promise<CustomEvaluationResult> => {
+  const ai = getAI();
   const prompt = `
     User Query: "Evaluate my readiness regarding: ${query}"
     
