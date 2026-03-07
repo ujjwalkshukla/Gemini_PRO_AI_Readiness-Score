@@ -16,8 +16,8 @@ const getAI = () => {
 };
 
 // Model Constants
-const FAST_MODEL = 'gemini-3-flash-preview';
-const PRO_MODEL = 'gemini-3-pro-preview';
+const FAST_MODEL = 'gemini-1.5-flash';
+const PRO_MODEL = 'gemini-1.5-pro';
 
 export const detectDomain = async (resumeText: string): Promise<DomainResult> => {
   const ai = getAI();
