@@ -21,6 +21,7 @@ A professional, domain-adaptive tool that evaluates your resume against the requ
 - **AI Engine**: Google Gemini API (Gemini 3 Pro & Gemini 3 Flash)
 - **Database**: Dexie.js (IndexedDB wrapper)
 - **PDF Extraction**: PDF.js
+- **Vibe Coding Tool**:Google AI Studio
 
 ## 🚦 Getting Started
 
